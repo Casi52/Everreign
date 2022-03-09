@@ -81,7 +81,7 @@ def story6():
       input("Tough luck, let's go.")
     else:
       print("Wonderful, let us begin.")
-    input("- These are the seeds:\n the Queen's Lilac,\n Cart Wild Rose,\n Woolly Sugarplum,\n Prairie White-Root,\n African Dindle,\n Soft Perennial Cucumber,\n Poke True Fern,\n Champion Evergreen Ivy,\n Poor Leatherleaf Willow Bark,\n Soldier's Thin-Leaved Grapevine")
+    input("- These are the seeds:\n Queen's Lilac,\n Cart Wild Rose,\n Woolly Sugarplum,\n Prairie White-Root,\n African Dindle,\n Soft Perennial Cucumber,\n Poke True Fern,\n Champion Evergreen Ivy,\n Poor Leatherleaf Willow Bark,\n Soldier's Thin-Leaved Grapevine")
     print()
     facit = list(d.seeds)
     d.quickSort(facit, 0, len(facit)-1)

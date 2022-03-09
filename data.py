@@ -77,14 +77,6 @@ def HPotion():
 
 #--Characters--
 
-
-class dragon:
-  name = "Smaug"
-  age = 2000
-  power = 1000
-  health = 10000
-
-
 class p:
   name = ""
   age = ""
@@ -353,7 +345,7 @@ goblin = Enemy("goblin",5 * p.lvl, 50 * p.lvl, 8, 22)
 orc = Enemy("orc",12 * p.lvl, 200 * p.lvl, 2, 30)
 knight = Enemy("knight",20 * p.lvl, 120 * p.lvl, 5, 15)
 griffin = Enemy("griffin",50 * p.lvl, 400 * p.lvl, 8, 40)
-dragon = Enemy("dragon", 200, 1000, )
+dragon = Enemy("dragon", 200, 1000, 8, 10000)
 
 #--Cheat functions--
 

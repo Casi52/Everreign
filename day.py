@@ -37,7 +37,7 @@ def day():
       print("=" * 50)
       print()
       print("What do you want to do?\n")
-      choices = ["Explore", "Rest", "Debug/Cheat", "Check inventory"]
+      choices = ["Explore", "Rest", "Check inventory"]
       for i in enumerate(choices):
         print(i[0] + 1, i[1])
       print()
@@ -57,7 +57,7 @@ def day():
         d.rest()
         end_day = True
   
-      elif choose == "3":
+      elif choose == "cheat":
         choices = ["WeaponSwap", "Invulnerability", "Stats"]
         for i in enumerate(choices):
           print(i[0] + 1, i[1])
@@ -85,7 +85,7 @@ def day():
             print("Error")
         end_day = True
             
-      elif choose == "4":
+      elif choose == "3":
         print("In your bag you find:\n")
         for item in d.inventory.items:
           print("Item: ", item, " | Amount: ", d.inventory.items[item], sep = "")
