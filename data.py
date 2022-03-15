@@ -245,6 +245,9 @@ def bossCombat(name, exname, power, ehealth, agility, gndfr):
   crit = 1
   pturn = True
   ehp = ehealth
+
+  #Player and enemy HP bars
+
   PHPDisplay = int(p.health / (p.maxHP / 10) * 3)
   print("\n          " + "+" + "=" * 30 + "+")
   print("Your HP:  " + "|" + ("#" * PHPDisplay) + "|")
@@ -258,11 +261,10 @@ def bossCombat(name, exname, power, ehealth, agility, gndfr):
   print("{:>102}".format(s1))
   print(" " * (37 - len(exname)) + s2)
   print("{:>102}".format(s3))
+
   while p.health > 0 and ehp > 0 and battle == True:
     print("=" * 100)
     print()
-
-    #Player and enemy HP bars
 
     if pturn == True:
       choices = ["Attack with " + eweapon.name, "Use item", "Attempt escape"]

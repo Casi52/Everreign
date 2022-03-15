@@ -79,7 +79,7 @@ def day():
           except:
             print("Error")
         end_day = True
-            
+
       elif choose == "3":
         print("In your bag you find:\n")
         for item in d.inventory.items:
@@ -113,7 +113,12 @@ def day():
   else:
     print("=" * 50)
     s.storys[d.days // 5]()
-
-  d.days += 1
+    end_day = True
+  print("mmm")
+  if d.dead == True:
+    d.death(d.days)
+    print("mmm2")
+  else:
+    d.days += 1
 
 
