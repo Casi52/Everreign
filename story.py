@@ -67,7 +67,26 @@ def story5():
     print("You are easily frightened and thus obeyed what little the sign said and walked away.")
   else:
     input("\nYou take no heed to the readable parts of the sign and continue into the cave.")
-    input("\nAs you step inside, ")
+    input("\nAs you take your first step inside, it seems as if someone turned of the sun. There is a tiny speck of light further ahead.")
+    choose = input("Continue deeper? (y/n) ")
+    print()
+    if choose in d.no:
+      print("\nYou exit the cave.")
+    else:
+      input("\nThe light turned out to be a torch attached to the wall. You grab the torch and continue deeper.")
+      choose = input("\nYou arrive upon a massive entrance. There are engravings along the edges but they are in a foreign language that you do not understand. Enter? (y/n) ")
+      if choose in d.no:
+        print("\nYou exit the cave.")
+      else:
+        print("\nAs you open the doors you see the massive hall inside. It strongly resembles that of an ancient elven royal hall, but in ruins. There are holes, slits, the size of ordinary shields, in the ceiling of the cave-hall, which provide some visibility.")
+        print("\nInside sits a massive ogre on a throne-shaped rock formation. He has the name 'Charvobog' engraved into the flesh of his chest, as a scar. His face is one that only an ogre could love and his arms are thicker than Every time he snores the ground vibrates and small rocks bounce around like a horde of grasshoppers")
+        input("\nAs you stand there, frozen in fear, the doors creak behind you and slam shut releasing a deafening soundwave that echoes in the massive hall. The ogre opened its eyes and stood up.")
+        input("\n- Who you is? Why you wake Charvobog slumber?")
+        input("\nYou find your mouth in complete disobediance to your brain, as you are inable to utter the slightest sound.")
+        input("\nThe ogre reaches behind its throne and grabs a giant iron mace.")
+        input("\n- You die now! No human go in Charvobogs cave")
+        d.bossCombat("Charvobog", "Charvobog, the elven dread", 20, 300, 3, d.gundifir)
+      
 
 def story6():
   print("\nYou encounter an old lady who is picking up seeds from the ground. She is visibly upset.\n\n- Will you help me?\n")
@@ -116,8 +135,7 @@ def story6():
       input("- Did you expect a reward? Haha, don't be stupid. Goodbye!")
     else:
       input("How could you possible fail this bad. I am ashamed to be in your presance. Begone!")
-    
-      
-      
-      
+
+
+
 storys = [story1,story2,story3,story4,story5,story6]

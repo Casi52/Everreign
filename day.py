@@ -26,12 +26,7 @@ def day():
   print("HP:", d.p.health)
   print()
 
-  if d.days % 5 == 0:
-    print("=" * 50)
-    #Trying to avoid using if/elif/else, but seems too complicated.
-    s.storys[d.days // 5]()
-    d.days += 1
-  else:
+  if d.days % 5 != 0:
     end_day = False
     while end_day == False:
       print("=" * 50)
@@ -115,7 +110,10 @@ def day():
   
           d.trader(d.p.money)
         end_day = True
+  else:
+    print("=" * 50)
+    s.storys[d.days // 5]()
 
-    d.days += 1
+  d.days += 1
 
 

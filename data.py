@@ -205,31 +205,30 @@ def combat(name, power, ehealth, agility, gndfr):
         print("           " + "+" + "=" * 30 + "+")
 
         input()
-
-  else:
-    x = r.randint(1, 10)
-    if x == 10:
-      crit = 1.25
     else:
-      crit = 1
-    edmg = r.randint(int(power - (power / 10)), int(power + (power / 10))) * crit
-    x = r.randint(agility, 10)
-    if x == 10:
-      print("The", name, "tries to strike you but you avoid the attack!")
-    else:
-      print("The", name, "strikes you")
-      p.health -= edmg
-    pturn = True
+      x = r.randint(1, 10)
+      if x == 10:
+        crit = 1.25
+      else:
+        crit = 1
+      edmg = r.randint(int(power - (power / 10)), int(power + (power / 10))) * crit
+      x = r.randint(agility, 10)
+      if x == 10:
+        print("The", name, "tries to strike you but you avoid the attack!")
+      else:
+        print("The", name, "strikes you")
+        p.health -= edmg
+      pturn = True
 
-    PHPDisplay = int(p.health / 10) * 3
-    print("\n          " + "+" + "=" * 30 + "+")
-    print("Your HP:  " + "|" + ("#" * PHPDisplay) + "|")
-    print("          " + "+" + "=" * 30 + "+")
+      PHPDisplay = int(p.health / 10) * 3
+      print("\n          " + "+" + "=" * 30 + "+")
+      print("Your HP:  " + "|" + ("#" * PHPDisplay) + "|")
+      print("          " + "+" + "=" * 30 + "+")
 
-    EHPDisplay = int(ehp / (ehealth / 10)) * 3
-    print("\n           " + "+" + "=" * 30 + "+")
-    print(name.capitalize(), ":  " + "|" + ("#" * EHPDisplay) + "|", sep="")
-    print("           " + "+" + "=" * 30 + "+")
+      EHPDisplay = int(ehp / (ehealth / 10)) * 3
+      print("\n           " + "+" + "=" * 30 + "+")
+      print(name.capitalize(), ":  " + "|" + ("#" * EHPDisplay) + "|", sep="")
+      print("           " + "+" + "=" * 30 + "+")
 
     input()
   if ehp <= 0:
@@ -238,17 +237,134 @@ def combat(name, power, ehealth, agility, gndfr):
   elif p.health <= 0:
     dead = True
 
+def bossCombat(name, exname, power, ehealth, agility, gndfr):
+  global dead
+
+  pow = p.power
+  battle = True
+  crit = 1
+  pturn = True
+  ehp = ehealth
+  PHPDisplay = int(p.health / (p.maxHP / 10) * 3)
+  print("\n          " + "+" + "=" * 30 + "+")
+  print("Your HP:  " + "|" + ("#" * PHPDisplay) + "|")
+  print("          " + "+" + "=" * 30 + "+")
+
+  EHPDisplay = int(ehp / (ehealth / 20)) * 3
+  print()
+  s1 = str("+" + "=" * 60 + "+")
+  s2 = str(exname.capitalize() + ":  " + "|" + ("#" * EHPDisplay) + "|")
+  s3 = str("+" + "=" * 60 + "+")
+  print("{:>102}".format(s1))
+  print(" " * (37 - len(exname)) + s2)
+  print("{:>102}".format(s3))
+  while p.health > 0 and ehp > 0 and battle == True:
+    print("=" * 100)
+    print()
+
+    #Player and enemy HP bars
+
+    if pturn == True:
+      choices = ["Attack with " + eweapon.name, "Use item", "Attempt escape"]
+      if gndfr == True:
+        choices.append("Ask Gundífir for help")
+      for i in enumerate(choices):
+        print(i[0] + 1, i[1])
+      print()
+      choose = input()
+      if choose == "2":
+        for i in enumerate(inventory.items):
+          print(i[0] + 1, i[1], "| Amount:", inventory.items[i[1]])
+        choose = input()
+        if choose == "1":
+          HPotion()
+          inventory.items["Hpotion"] -= 1
+        elif choose == "2":
+          print("WIP")
+        elif choose == "3":
+          print("WIP")
+        pturn == False
+      elif choose == "3":
+        esc = r.randint(p.agility - agility, 20)
+        if esc >= 15:
+          print("\nYou escaped\n")
+          battle = False
+        else:
+          print("\nYou were incapable of escaping and thus were brutally crushed\n")
+          dead = True
+      elif gndfr == True and choose == "4":
+        print("Gundífir uses his magic to temporarily boost your power.")
+        pturn = False
+        p.power += 5
+      else:
+        x = r.randint(1, 10)
+        if x == 10:
+          crit = 1.25
+        else:
+          crit = 1
+        dmg = (r.randint(int(p.power - (p.power / 10)),int(p.power + (p.power / 10))) * crit) + eweapon.power
+        x = r.randint(agility, agility + 50 - 5 * p.lvl)
+        if x == 10:
+          print("You", r.sample(eweapon.attack, 1)[0], name, "with your", eweapon.name, "but it avoids the attack!")
+        else:
+          print("You", r.sample(eweapon.attack, 1)[0], name, "with your", eweapon.name)
+          ehp -= dmg
+        pturn = False
+        PHPDisplay = int(p.health / 10) * 3
+        print("\n          " + "+" + "=" * 30 + "+")
+        print("Your HP:  " + "|" + ("#" * PHPDisplay) + "|")
+        print("          " + "+" + "=" * 30 + "+")
+
+        EHPDisplay = int(ehp / (ehealth / 20)) * 3
+        print()
+        s1 = str("+" + "=" * 60 + "+")
+        s2 = str(exname.capitalize() + ":  " + "|" + ("#" * EHPDisplay) + "|")
+        s3 = str("+" + "=" * 60 + "+")
+        print("{:>102}".format(s1))
+        print(" " * (37 - len(exname)) + s2)
+        print("{:>102}".format(s3))
+    else:
+      x = r.randint(1, 10)
+      if x == 10:
+        crit = 1.25
+      else:
+        crit = 1
+      edmg = r.randint(int(power - (power / 10)), int(power + (power / 10))) * crit
+      x = r.randint(agility, 10)
+      if x == 10:
+        print(name.capitalize(), "tries to strike you but you avoid the attack!")
+      else:
+        print(name.capitalize(), "strikes you")
+        p.health -= edmg
+      pturn = True
+
+      PHPDisplay = int(p.health / 10) * 3
+      print("\n          " + "+" + "=" * 30 + "+")
+      print("Your HP:  " + "|" + ("#" * PHPDisplay) + "|")
+      print("          " + "+" + "=" * 30 + "+")
+
+      EHPDisplay = int(ehp / (ehealth / 20)) * 3
+      print()
+      s2 = str(exname.capitalize() + ":  " + "|" + ("#" * EHPDisplay) + "|")
+      s3 = str("+" + "=" * 60 + "+")
+      print("{:>102}".format(s1))
+      print(" " * (37 - len(exname)) + s2)
+      print("{:>102}".format(s3))
+
+    input()
+  if ehp <= 0:
+    print("You win")
+    p.power = pow
+  elif p.health <= 0:
+    dead = True
 
 def calm(erage, ename):
   calm = r.randint(1, p.charisma)
   if calm < erage:
-    print("You tried to calm the", ename,
-      "but instead you just aggrevated it.")
+    print("You tried to calm the", ename, "but instead you just aggrevated it.")
     return False
   if calm >= erage:
-    print(
-      "Using your superior charismatic skills, you successfully calm the",
-      ename)
+    print("Using your superior charismatic skills, you successfully calm the", ename)
     return True
 
 
