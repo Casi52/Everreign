@@ -86,7 +86,6 @@ def story5():
         input("\nThe ogre reaches behind its throne and grabs a giant iron mace.")
         input("\n- You die now! No human go in Charvobogs cave")
         d.bossCombat("Charvobog", "Charvobog, the elven dread", 20, 300, 3, d.gundifir)
-        print("done")
       
 
 def story6():
