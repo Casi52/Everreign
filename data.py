@@ -4,16 +4,16 @@ import random as r
 
 days = 0
 dead = False
-vow = ["A","E","O","I","U","Y","a","e","o","i","u","y"]
-yes = ["Yes", "yes", "Y", "y"]
-no = ["No", "no", "N", "n"]
+vow = ("A","E","O","I","U","Y","a","e","o","i","u","y")
+yes = ("Yes", "yes", "Y", "y")
+no = ("No", "no", "N", "n")
 twpn = ["Stick","Sword","Staff","Bow"]
 pwpn = {"Stick":2,"Sword":30,"Staff":100,"Bow":50}
 titm = ["Health Potion", "Flash Bomb", "Cursed Scroll"]
 pitm = {"Health Potion":15, "Flash Bomb":30, "Cursed Scroll":60}
-gfeel = ["rested", "good", "energetic", "calm"]
-ofeel = ["okay", "fine", "decent"]
-bfeel = ["hurt", "unmotivated", "bad", "worried"]
+gfeel = ("rested", "good", "energetic", "calm")
+ofeel = ("okay", "fine", "decent")
+bfeel = ("hurt", "unmotivated", "bad", "worried")
 seeds = ["Queen's Lilac","Cart Wild Rose","Woolly Sugarplum","Prairie White-Root","African Dindle","Soft Perennial Cucumber","Poke True Fern","Champion Evergreen Ivy","Poor Leatherleaf Willow","Soldier's Thin-Leaved Grapevine"]
 eseeds = [None,None,None,None,None,None,None,None,None,None]
 gundifir = False
@@ -459,11 +459,11 @@ class Enemy:
     self.agility = agility,
     self.rage = rage,
 
-goblin = Enemy("goblin",5 * p.lvl, 50 * p.lvl, 8, 22)
-orc = Enemy("orc",12 * p.lvl, 200 * p.lvl, 2, 30)
-knight = Enemy("knight",20 * p.lvl, 120 * p.lvl, 5, 15)
-griffin = Enemy("griffin",50 * p.lvl, 400 * p.lvl, 8, 40)
-dragon = Enemy("dragon", 200, 1000, 8, 10000)
+goblin = Enemy("goblin",5, 50, 8, 22)
+orc = Enemy("orc",12, 200, 2, 30)
+knight = Enemy("knight",20, 120, 5, 15)
+griffin = Enemy("griffin",50, 400, 8, 40)
+dragon = Enemy("dragon", 200, 1000, 8, 100)
 
 #--Cheat functions--
 

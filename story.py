@@ -121,7 +121,7 @@ def story6():
           pseeds.remove(s)
           x += 1
       except:
-        print("What? You managed to write a number wrong? This is embarrasing.")
+        print("What? You managed to write a number wrongfully? This is embarrasing.")
     print("\n- This is how you sorted the seeds:\n")
     for i in enumerate(d.eseeds):
       print(i[0], i[1])
@@ -138,4 +138,4 @@ def story6():
 
 
 
-storys = [story1,story2,story3,story4,story5,story6]
+storys = (story1,story2,story3,story4,story5,story6)

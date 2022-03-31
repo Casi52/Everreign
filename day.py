@@ -93,7 +93,8 @@ def day():
   
           #Combat
   
-          #x = r.randint(1,[amount of enemies])
+          #x is restricted by the player's level, as to avoid early encounters with powerful enemies
+
           x = r.randint(1,4)
           if x == 1:
             d.basicEnc(d.goblin.name[0],d.goblin.power[0],d.goblin.health[0],d.goblin.agility[0],d.goblin.rage[0], d.gundifir)
@@ -114,10 +115,8 @@ def day():
     print("=" * 50)
     s.storys[d.days // 5]()
     end_day = True
-  print("mmm")
   if d.dead == True:
     d.death(d.days)
-    print("mmm2")
   else:
     d.days += 1
 
